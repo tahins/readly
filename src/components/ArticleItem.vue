@@ -1,7 +1,7 @@
 <template>
     <div class="article-item" :class="{'first-item': isFirstItem}" @click="gotoDetails()">
-        <div class="article-image" :style="{backgroundImage: 'url(' + articleItem.urlToImage + ')'}"></div>
-        <div class="article-source">{{articleItem.source.name}}</div>
+        <div class="article-image" :style="{backgroundImage: 'url(' + articleItem.featuredImageUrl + ')'}"></div>
+        <div class="article-source">{{articleItem.source}}</div>
         <div class="article-title">{{articleItem.title}}</div>
         <div class="article-time">{{fromNow(articleItem.publishedAt)}}</div>
     </div>

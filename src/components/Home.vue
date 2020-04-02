@@ -1,8 +1,10 @@
 <template>
     <div id="Home">
         <div class="title-bar">
-            <div class="title">Top Stories</div>
-            <div class="search"><font-awesome-icon icon="search" size="lg"/></div>
+            <div class="section-title">Top Stories</div>
+            <div class="search">
+                <b-button type="is-text" icon-left="search">Search</b-button>
+            </div>
         </div>
         <article-list/>
     </div>
@@ -29,16 +31,17 @@
         justify-content: space-between;
     }
 
-    .title {
+    .section-title {
         color: #d30000;
         font-size: 30px;
         font-weight: 900;
         letter-spacing: -1px;
     }
 
-    .search {
-        padding: 7px 0;
-        cursor: pointer;
-        color: darkgray;
+    .search button {
+        margin: 3px 0px;
+        padding-right: 0;
+        text-decoration: none;
+        background-color: transparent !important;
     }
 </style>

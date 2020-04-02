@@ -1,30 +1,52 @@
 <template>
     <div class="article-container">
+        <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true">
+            <b-icon
+                    pack="fas"
+                    icon="sync-alt"
+                    size="is-large"
+                    custom-class="fa-spin">
+            </b-icon>
+        </b-loading>
         <div class="article-list">
             <article-item v-for="(article, index) in articleList"
                           :articleItem="article" :key="index"
                           :isFirstItem="index == 0">
             </article-item>
         </div>
-        <button class="button default load-more">Load more</button>
+        <div v-if="articleList.length > 0" class="section is-small">
+            <b-button rounded expanded type="is-info" size="is-large" @click="fetchTopHeadlines()">Load more</b-button>
+        </div>
     </div>
 </template>
 
 <script>
-    import axios from 'axios';
-    import AppConstant from "../constants/AppConstant";
     import ArticleItem from "./ArticleItem";
+    import NewsApiService from "../services/NewsApiService";
+
+    const newsApiService = new NewsApiService()
 
     export default {
         name: "ArticleList",
         components: {ArticleItem},
-        data () { return {
-            articleList: []
-        }},
-        mounted () {
-            axios
-                .get(AppConstant.newsApi.topHeadlines + process.env.VUE_APP_NEWS_API_KEY)
-                .then(response => {this.articleList = response.data.articles});
+        data() {
+            return {
+                articleList: [],
+                isLoading: true,
+                pageNo: 1
+            }
+        },
+        async mounted() {
+            this.fetchTopHeadlines();
+        },
+        methods: {
+            fetchTopHeadlines: async function () {
+                this.isLoading = true;
+                const articles = await newsApiService.getTopHeadlines(this.pageNo);
+                this.articleList.push(...articles);
+                this.pageNo++;
+                this.isLoading = false;
+            }
         }
     }
 </script>
@@ -36,8 +58,6 @@
         padding-bottom: 20px;
     }
 
-    .button.load-more {
-        margin: auto;
-        display: flex;
-    }
+    .section { padding-top: 0.5rem; }
+
 </style>
