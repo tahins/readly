@@ -20,7 +20,9 @@
 
 <style scoped>
     #Home {
+        margin: auto;
         display: flex;
+        max-width: 640px;
         padding-bottom: 30px;
         flex-direction: column;
     }
@@ -39,7 +41,7 @@
     }
 
     .search button {
-        margin: 3px 0px;
+        margin: 3px 0;
         padding-right: 0;
         text-decoration: none;
         background-color: transparent !important;

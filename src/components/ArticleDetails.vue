@@ -72,8 +72,10 @@
     .article-details-topbar {
         top: 0;
         width: 100%;
+        height: 50px;
         display: flex;
         position: fixed;
+        align-items: center;
         justify-content: space-between;
 
         background: rgba(0,0,0,0.7);
@@ -104,8 +106,8 @@
         top: 0;
         width: 100%;
         z-index: -1;
-        height: 300px;
         position: fixed;
+        padding-top: 56.25%;
         background-size: cover;
     }
 

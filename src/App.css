@@ -14,3 +14,8 @@ html, body {
 }
 
 #App {}
+
+.button.is-large {
+    height: 54px;
+    font-size: 1.25rem !important;
+}
