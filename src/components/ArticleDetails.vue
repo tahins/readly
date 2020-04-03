@@ -142,6 +142,7 @@
     .article-description {
         color: gray;
         font-size: 20px;
+        line-height: 1.25;
     }
 
     .article-content {
