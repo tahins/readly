@@ -13,9 +13,27 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#App {}
+#App {
+    margin: auto;
+    max-width: 640px;
+}
 
 .button.is-large {
     height: 54px;
     font-size: 1.25rem !important;
+}
+
+.article-image {
+    width: 100%;
+    max-width: 640px;
+    padding-top: 340px;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 640px) {
+    .article-image {
+        max-width: 100%;
+        padding-top: 56.25%;
+    }
 }

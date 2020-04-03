@@ -20,9 +20,7 @@
 
 <style scoped>
     #Home {
-        margin: auto;
         display: flex;
-        max-width: 640px;
         padding-bottom: 30px;
         flex-direction: column;
     }

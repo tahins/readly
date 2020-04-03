@@ -46,11 +46,7 @@
     }
 
     .article-image {
-        width: 100%;
         border-radius: 5px;
-        padding-top: 56.25%;
-        background-size: cover;
-        background-position: center;
         background-image: url("https://static.politico.com/1a/8f/5f53553048d98b3afa2e42c0944c/200328-trump-wh-getty-773.jpg");
     }
 

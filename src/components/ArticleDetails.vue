@@ -55,9 +55,9 @@
         methods: {
             shareArticle() {
                 navigator.share({
-                    url: this.$route.params.articleDetails.content,
-                    title: this.$route.params.articleDetails.title,
-                    text: this.$route.params.articleDetails.description
+                    url: this.url,
+                    title: this.title,
+                    text: this.description
                 });
             }
         }
@@ -75,6 +75,7 @@
         height: 50px;
         display: flex;
         position: fixed;
+        max-width: 640px;
         align-items: center;
         justify-content: space-between;
 
@@ -104,16 +105,13 @@
 
     .article-image {
         top: 0;
-        width: 100%;
         z-index: -1;
         position: fixed;
-        padding-top: 56.25%;
-        background-size: cover;
     }
 
     .article-text-content {
         padding: 15px;
-        margin-top: 240px;
+        margin-top: 50%;
         background-color: white;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
