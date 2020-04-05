@@ -6,7 +6,7 @@
             </router-link>
             <b-button v-if="shareEnabled" type="is-text" icon-left="share-alt" @click="shareArticle()">Share</b-button>
         </div>
-        <div class="article-image"
+        <div class="article-image first-item"
              :style="{backgroundImage: 'url(' + this.featuredImageUrl + ')'}"></div>
         <div class="article-text-content">
             <div class="article-title">{{this.title}}</div>
@@ -26,6 +26,9 @@
 
 <script>
     import moment from 'moment';
+    import NewsApiService from "../services/NewsApiService";
+
+    const newsApiService = new NewsApiService();
 
     export default {
         name: "ArticleDetails",
@@ -35,17 +38,22 @@
                 description: "", content: "", publishedAt: ""
             }
         },
-        mounted: function () {
+        mounted: async function () {
             this.title = this.$route.params.title;
+            let article = {};
 
             if (this.$route.params.articleDetails) {
-                this.source = this.$route.params.articleDetails.source;
-                this.url = this.$route.params.articleDetails.url;
-                this.featuredImageUrl = this.$route.params.articleDetails.featuredImageUrl;
-                this.publishedAt = moment(this.$route.params.articleDetails.publishedAt).format('LLLL');
-                this.description = this.$route.params.articleDetails.description;
-                this.content = this.$route.params.articleDetails.content;
+                article = this.$route.params.articleDetails;
+            } else {
+                article = await newsApiService.getNewsByTitle(this.title);
             }
+
+            this.source = article.source;
+            this.url = article.url;
+            this.featuredImageUrl = article.featuredImageUrl;
+            this.publishedAt = moment(article.publishedAt).format('LLLL');
+            this.description = article.description;
+            this.content = article.content;
         },
         computed: {
             shareEnabled: function () {

@@ -28,6 +28,28 @@ class NewsApiService {
                 return articleList;
             });
     }
+
+    getNewsByTitle(title) {
+        const apiURL = AppConstant.newsApi.searchNews
+            .replace("{query}", title)
+            .replace("{apiKey}", this.apiKey);
+
+        return axios
+            .get(apiURL)
+            .then(response => {
+                const article = response.data.articles[0];
+
+                return {
+                    title: article.title,
+                    source: article.source.name,
+                    url: article.url,
+                    featuredImageUrl: article.urlToImage,
+                    description: article.description,
+                    content: article.content,
+                    publishedAt: article.publishedAt
+                };
+            });
+    }
 }
 
 export default NewsApiService;

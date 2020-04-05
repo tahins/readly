@@ -25,15 +25,15 @@ html, body {
 
 .article-image {
     width: 100%;
-    max-width: 640px;
-    padding-top: 340px;
+    max-width: 100%;
+    padding-top: 56.25%;
     background-size: cover;
     background-position: center;
 }
 
-@media (max-width: 640px) {
-    .article-image {
-        max-width: 100%;
-        padding-top: 56.25%;
+@media (min-width: 640px) {
+    .article-image.first-item {
+        max-width: 640px;
+        padding-top: 340px;
     }
 }

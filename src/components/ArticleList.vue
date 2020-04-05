@@ -24,7 +24,7 @@
     import ArticleItem from "./ArticleItem";
     import NewsApiService from "../services/NewsApiService";
 
-    const newsApiService = new NewsApiService()
+    const newsApiService = new NewsApiService();
 
     export default {
         name: "ArticleList",
