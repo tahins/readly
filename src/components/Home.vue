@@ -21,7 +21,6 @@
 <style scoped>
     #Home {
         display: flex;
-        padding-bottom: 30px;
         flex-direction: column;
     }
 
